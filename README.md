@@ -16,11 +16,13 @@ helm upgrade --install ingress-nginx ingress-nginx \
 ## Installation
 
 ```bash
+docker-compose build
 helm upgrade --install example .
 ```
 
 ## Uninstallation
 
 ```bash
+docker-compose down --rmi all --volumes --remove-orphans
 helm uninstall example
 ```
