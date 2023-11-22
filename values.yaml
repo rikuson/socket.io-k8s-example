@@ -9,6 +9,11 @@ image:
   pullPolicy: Never
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
+  env:
+    - name: REDIS_URL
+      value: redis://example-redis-master:6379
+    - name: REDIS_PASSWORD
+      value: password
 
 imagePullSecrets: []
 nameOverride: ""
@@ -80,3 +85,10 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+global:
+  redis:
+    password: password
+redis:
+  replica:
+    replicaCount: 1
