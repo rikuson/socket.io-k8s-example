@@ -11,7 +11,7 @@ const query = {
   roomId: searchParams.get('roomId'),
   userName: searchParams.get('userName'),
 };
-const socket = io({ query, transports: ['websocket'] });
+const socket = io("ws://localhost:80", { query, transports: ['websocket'] });
 logger.info('Try to connect socket', query);
 
 socket.on('connect', () => {
