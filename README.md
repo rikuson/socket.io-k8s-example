@@ -17,7 +17,7 @@ helm upgrade --install ingress-nginx ingress-nginx \
 
 ```bash
 docker-compose build
-helm upgrade --install example .
+helm upgrade --install example infra
 ```
 
 ## Uninstallation

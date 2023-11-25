@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: socketio-k8s-example-app
+  repository: socketio-k8s-example-backend
   pullPolicy: Never
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
