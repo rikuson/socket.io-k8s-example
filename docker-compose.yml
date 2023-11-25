@@ -1,6 +1,14 @@
 version: '3.5'
 
 services:
+  frontend:
+    build: ./frontend
+    ports:
+      - 3000:80
+    expose:
+      - 3000
+    volumes:
+      - ./frontend:/usr/share/nginx/html
   app:
     build: ./infra
     init: true
