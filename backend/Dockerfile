@@ -6,4 +6,4 @@ ENV REDIS_PASSWORD ""
 COPY . /app
 WORKDIR /app
 RUN npm ci
-ENTRYPOINT ["node", "./bin/www"]
+ENTRYPOINT ["node", "index"]

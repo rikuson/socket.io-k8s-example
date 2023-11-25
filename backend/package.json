@@ -1,24 +1,20 @@
 {
-  "name": "express-socketio-redis-sample",
-  "version": "0.0.0",
-  "engines": {
-    "node": "16.x"
-  },
-  "private": true,
-  "scripts": {
-    "start": "nodemon ./bin/www"
-  },
+  "name": "whiteboard",
+  "version": "1.0.0",
+  "description": "A simple collaborative whiteboard using socket.io",
+  "main": "index.js",
+  "keywords": [
+    "socket.io",
+    "whiteboard"
+  ],
   "dependencies": {
-    "@socket.io/redis-streams-adapter": "^0.1.0",
-    "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
-    "debug": "~2.6.9",
-    "express": "~4.16.1",
-    "morgan": "~1.9.1",
-    "redis": "^4.3.0",
-    "socket.io": "^4.7.2"
+    "express": "~4.17.1",
+    "socket.io": "^4.0.0"
   },
-  "devDependencies": {
-    "nodemon": "^2.0.19"
-  }
+  "scripts": {
+    "start": "node index"
+  },
+  "author": "Damien Arrachequesne",
+  "license": "MIT"
 }
