@@ -13,8 +13,11 @@
     "socket.io": "^4.0.0"
   },
   "scripts": {
-    "start": "node index"
+    "start": "nodemon index"
   },
   "author": "Damien Arrachequesne",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
 }
