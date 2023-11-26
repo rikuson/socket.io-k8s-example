@@ -51,7 +51,6 @@
       y0: y0 / h,
       x1: x1 / w,
       y1: y1 / h,
-      color: color
     });
   }
 
@@ -76,6 +75,7 @@
 
   function onColorUpdate(e){
     current.color = e.target.className.split(' ')[1];
+    socket.emit('colorUpdate', { color: current.color });
   }
 
   // limit the number of events per second

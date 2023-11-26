@@ -24,23 +24,36 @@ function onConnection(socket) {
   });
   socket.on('drawing', (data) => {
     console.log('Socket is broadcasting drawing data', data);
-    socket.broadcast.emit('drawing', data);
+    socket.broadcast.emit('drawing', { ...data, color: socket.data.color });
+  });
+  socket.on('colorUpdate', (data) => {
+    console.log('Socket is saving color', data);
+    socket.data.color = data.color;
   });
 }
 
 redis.connect().then(() => {
+  console.log('Redis is connected');
   const io = new Server(http, {
     adapter: createAdapter(redis),
     connectionStateRecovery: {
       maxDisconnectionDuration: 2 * 60 * 1000,
+      skipMiddlewares: true,
     },
     cors: {
       origin: 'http://localhost:3000',
       methods: ["GET", "POST"]
     }
   });
+  io.use((socket, next) => {
+    socket.data.color = 'black';
+    next();
+  });
   io.on('connection', onConnection);
-  process.on('SIGTERM', () => io.close());
+  process.on('SIGTERM', () => {
+    console.log('Shutting down')
+    io.close(() => console.log('SocketIO server closed'));
+  });
 });
 
 http.listen(port, () => console.log('listening on port ' + port));
