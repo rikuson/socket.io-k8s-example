@@ -11,6 +11,8 @@ services:
       - ./frontend:/usr/share/nginx/html
   backend:
     build: ./backend
+    platform: linux/amd64
+    init: true
     entrypoint:
       - npm
       - start
@@ -22,8 +24,8 @@ services:
       - ./backend:/app
       - node_modules:/app/node_modules
     depends_on:
-      - kvs
-  kvs:
+      - adapter
+  adapter:
     image: redis:7.0.4
     ports:
       - 6379:6379
