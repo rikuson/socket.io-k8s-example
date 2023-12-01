@@ -2,7 +2,7 @@
 
 (function() {
 
-  var socket = io('http://localhost', { transports: ['websocket'] });
+  var socket = io('http://localhost:3000', { transports: ['websocket'] });
   var canvas = document.getElementsByClassName('whiteboard')[0];
   var colors = document.getElementsByClassName('color');
   var context = canvas.getContext('2d');
