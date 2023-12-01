@@ -4,14 +4,12 @@ const express = require('express');
 const app = express();
 const http = require('http').Server(app);
 const { Server } = require('socket.io');
-const cors = require('cors');
 const redis = createClient({
   url: process.env.REDIS_URL,
   password: process.env.REDIS_PASSWORD,
 })
 const port = process.env.PORT || 3000;
 
-app.use(cors({ origin: 'http://localhost:3000' }));
 app.get('/', (req, res) => res.send('ok'));
 
 function onConnection(socket) {
@@ -40,10 +38,6 @@ redis.connect().then(() => {
       maxDisconnectionDuration: 2 * 60 * 1000,
       skipMiddlewares: true,
     },
-    cors: {
-      origin: 'http://localhost:3000',
-      methods: ["GET", "POST"]
-    }
   });
   io.use((socket, next) => {
     socket.data.color = 'black';
