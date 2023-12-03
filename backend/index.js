@@ -17,6 +17,7 @@ function onConnection(socket) {
     data: socket.data,
     recovered: socket.recovered,
   });
+  socket.emit('init');
   socket.on('disconnect', () => {
     console.log('Socket is disconnected');
   });
